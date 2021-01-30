@@ -34,6 +34,7 @@ function Timer({ sessionLength, timer, setTimer, timerState }) {
     setTimeLeft(sessionLength * 60);
   }, [sessionLength]);
   useEffect(() => {
+    if (!timeLeft) return;
     if (timerState) {
       var t = setTimeout(() => {
         setTimeLeft(timeLeft - 1);
