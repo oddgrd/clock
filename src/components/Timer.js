@@ -12,7 +12,6 @@ function Timer({
   setTimerType,
 }) {
   const [timeLeft, setTimeLeft] = useState(sessionLength * 60);
-  const [alarm, toggleAlarm] = useState(true);
 
   const secondsToMinutes = (seconds) => {
     const minutesLeft = Math.floor(seconds / 60);
