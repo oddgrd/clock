@@ -1,6 +1,6 @@
 import { React, useState } from "react";
 import "./App.css";
-import DurationIncrementers from "./components/DurationIncrementers";
+import DurationModifiers from "./components/DurationModifiers";
 import Timer from "./components/Timer";
 import Heading from "./components/Heading";
 function App() {
@@ -9,14 +9,14 @@ function App() {
   const [timerState, toggleTimerState] = useState(false);
   const [timerType, setTimerType] = useState("Session");
 
-  const durationIncrementers = ["break", "session"];
+  const durationModifiers = ["break", "session"];
   return (
     <div className="App">
-      <Heading text="25+5Clock" arc={120} radius={350} />
+      <Heading text="25+5CLOCK" arc={120} radius={350} />
       <div className="grid-container">
-        {durationIncrementers.map((type, index) => {
+        {durationModifiers.map((type, index) => {
           return (
-            <DurationIncrementers
+            <DurationModifiers
               key={index}
               type={type}
               breakLength={breakLength}

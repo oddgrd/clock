@@ -4,7 +4,7 @@ import { faPause, faPlay, faUndo } from "@fortawesome/free-solid-svg-icons";
 const play = <FontAwesomeIcon icon={faPlay} size="2x" />;
 const pause = <FontAwesomeIcon icon={faPause} size="2x" />;
 const reset = <FontAwesomeIcon icon={faUndo} size="2x" />;
-function MediaControls({
+function TimerControls({
   setBreakLength,
   setSessionLength,
   timerState,
@@ -38,4 +38,4 @@ function MediaControls({
   );
 }
 
-export default MediaControls;
+export default TimerControls;

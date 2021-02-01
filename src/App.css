@@ -1,4 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:ital@1&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -13,6 +14,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  font-family: "Roboto", sans-serif;
 }
 .grid-container {
   border: 8px dotted #ffd700;
@@ -25,36 +27,43 @@ body {
   grid-template-rows: 1fr 3fr 3fr 3fr 1fr;
 }
 
-.duration-incrementers {
-  /* border: 2px solid yellow; */
+.duration-modifiers {
   display: grid;
   grid-template-rows: 1fr 3fr;
+  justify-self: center;
+  border: 4px solid #ffd700;
+  border-radius: 8px;
+  width: 215px;
+  margin-bottom: 15px;
 }
 .increment-button,
 .decrement-button {
   justify-self: center;
   align-self: center;
-  margin-top: -40px;
+  margin-top: -50px;
   cursor: pointer;
   border: none;
   color: #ffd700;
   background: none;
+  transition: all 0.3s ease;
 }
-/* .decrement-button {
-  margin-top: -50px;
-} */
-.incrementer-label {
+
+.increment-button:hover,
+.decrement-button:hover {
+  color: white;
+}
+
+.modifier-label {
   text-align: center;
   padding-top: 5px;
 }
-.incrementer-timer {
+.modifier-timer {
   text-align: center;
-  margin-top: -60px;
+  margin-top: -65px;
   font-size: 1.5rem;
 }
 
-.session-view {
-  /* border: 2px solid blue; */
+.timer-container {
   display: grid;
   grid-template-rows: 1fr 3fr;
   grid-template-columns: auto;
@@ -78,24 +87,29 @@ body {
   background: none;
   cursor: pointer;
 }
+
 #reset,
 #start_stop {
   color: #ffd700;
   border: none;
   background: none;
   cursor: pointer;
+  transition: all 0.3s ease;
 }
-
+#reset:hover,
+#start_stop:hover {
+  color: white;
+}
 #reset {
   padding-left: 10px;
 }
 
 .heading {
   font-family: monospace;
-  font-size: 64px;
+  font-size: 70px;
   color: #ffd700;
   text-align: center;
-  padding-bottom: 67px;
+  padding-bottom: 71px;
 }
 .heading span {
   z-index: -1;

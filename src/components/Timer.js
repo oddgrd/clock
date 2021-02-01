@@ -1,5 +1,5 @@
 import { React, useEffect, useState } from "react";
-import MediaControls from "./MediaControls";
+import TimerControls from "./TimerControls";
 
 function Timer({
   sessionLength,
@@ -26,11 +26,12 @@ function Timer({
     sound.play();
   };
 
+  //Runs when session length is changed
   useEffect(() => {
     setTimeLeft(sessionLength * 60);
   }, [sessionLength]);
+  //Runs after every DOM update (on state changes)
   useEffect(() => {
-    //if (!timeLeft) return;
     if (timeLeft === 0 && timerType === "Session") {
       playSound();
       setTimerType("Break");
@@ -48,14 +49,14 @@ function Timer({
     }
   });
   return (
-    <div className="session-view">
+    <div className="timer-container">
       <h2 id="timer-label" style={{ color: timeLeft < 60 ? "red" : "#ffd700" }}>
         {timerType}
       </h2>
       <h1 id="time-left" style={{ color: timeLeft < 60 ? "red" : "#ffd700" }}>
         {secondsToMinutes(timeLeft)}
       </h1>
-      <MediaControls
+      <TimerControls
         setBreakLength={setBreakLength}
         setSessionLength={setSessionLength}
         timerState={timerState}
