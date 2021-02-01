@@ -30,16 +30,18 @@ function Timer({
   useEffect(() => {
     setTimeLeft(sessionLength * 60);
   }, [sessionLength]);
+
   //Runs after every DOM update (on state changes)
   useEffect(() => {
-    if (timeLeft === 0 && timerType === "Session") {
+    if (timeLeft === 0) {
       playSound();
-      setTimerType("Break");
-      setTimeLeft(breakLength * 60);
-    }
-    if (timeLeft === 0 && timerType === "Break") {
-      setTimerType("Session");
-      setTimeLeft(sessionLength * 60);
+      if (timerType === "Session") {
+        setTimerType("Break");
+        setTimeLeft(breakLength * 60);
+      } else {
+        setTimerType("Session");
+        setTimeLeft(sessionLength * 60);
+      }
     }
     if (timerState) {
       var t = setTimeout(() => {
@@ -48,6 +50,7 @@ function Timer({
       return () => clearTimeout(t);
     }
   });
+
   return (
     <div className="timer-container">
       <h2 id="timer-label" style={{ color: timeLeft < 60 ? "red" : "#ffd700" }}>
