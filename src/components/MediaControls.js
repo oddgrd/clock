@@ -9,12 +9,18 @@ function MediaControls({
   setSessionLength,
   timerState,
   toggleTimerState,
-  setTimer,
+  setTimeLeft,
+  setTimerType,
 }) {
   const handleReset = () => {
     toggleTimerState(false);
+    setTimerType("Session");
+    setTimeLeft(25 * 60);
     setBreakLength(5);
     setSessionLength(25);
+    const sound = document.getElementById("beep");
+    sound.currentTime = 0;
+    sound.pause();
   };
   const handlePlayPause = () => {
     toggleTimerState(!timerState);

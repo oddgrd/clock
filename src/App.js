@@ -1,15 +1,14 @@
 import { React, useState } from "react";
 import "./App.css";
 import DurationIncrementers from "./components/DurationIncrementers";
-import SessionView from "./components/SessionView";
-import MediaControls from "./components/MediaControls";
+import Timer from "./components/Timer";
 import Heading from "./components/Heading";
 function App() {
   const [breakLength, setBreakLength] = useState(5);
   const [sessionLength, setSessionLength] = useState(25);
   const [timerState, toggleTimerState] = useState(false);
   const [timerType, setTimerType] = useState("Session");
-  const [timer, setTimer] = useState("");
+
   const durationIncrementers = ["break", "session"];
   return (
     <div className="App">
@@ -28,19 +27,15 @@ function App() {
             />
           );
         })}
-        <SessionView
+        <Timer
           sessionLength={sessionLength}
-          timerType={timerType}
-          timer={timer}
-          setTimer={setTimer}
-          timerState={timerState}
-        />
-        <MediaControls
-          setBreakLength={setBreakLength}
           setSessionLength={setSessionLength}
+          timerType={timerType}
+          setTimerType={setTimerType}
           timerState={timerState}
+          breakLength={breakLength}
+          setBreakLength={setBreakLength}
           toggleTimerState={toggleTimerState}
-          setTimer={setTimer}
         />
       </div>
     </div>

@@ -1,27 +1,18 @@
 import { React, useEffect, useState } from "react";
+import MediaControls from "./MediaControls";
 
-function Timer({ sessionLength, timer, setTimer, timerState }) {
+function Timer({
+  sessionLength,
+  timerState,
+  breakLength,
+  setBreakLength,
+  setSessionLength,
+  toggleTimerState,
+  timerType,
+  setTimerType,
+}) {
   const [timeLeft, setTimeLeft] = useState(sessionLength * 60);
-  const sessionLengthTime =
-    sessionLength < 10 ? `0${sessionLength}` : sessionLength;
-
-  const calculateRemainingTime = () => {
-    const now = Date.now();
-    const then = Date.now() + sessionLength * 1000 * 60;
-
-    let difference = +then - +now;
-    let timeLeft = {};
-    if (difference > 0) {
-      timeLeft = {
-        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-        minutes: Math.floor((difference / 1000 / 60) % 60),
-        seconds: Math.floor((difference / 1000) % 60),
-      };
-    }
-    console.log(difference / 1000);
-    return difference / 1000;
-  };
+  const [alarm, toggleAlarm] = useState(true);
 
   const secondsToMinutes = (seconds) => {
     const minutesLeft = Math.floor(seconds / 60);
@@ -30,20 +21,56 @@ function Timer({ sessionLength, timer, setTimer, timerState }) {
     const secString = secondsLeft < 10 ? `0${secondsLeft}` : `${secondsLeft}`;
     return `${minString}:${secString}`;
   };
+  const playSound = () => {
+    const sound = document.getElementById("beep");
+    sound.currentTime = 0;
+    sound.play();
+  };
+
   useEffect(() => {
     setTimeLeft(sessionLength * 60);
   }, [sessionLength]);
   useEffect(() => {
-    if (!timeLeft) return;
+    //if (!timeLeft) return;
+    if (timeLeft === 0 && timerType === "Session") {
+      playSound();
+      setTimerType("Break");
+      setTimeLeft(breakLength * 60);
+    }
+    if (timeLeft === 0 && timerType === "Break") {
+      setTimerType("Session");
+      setTimeLeft(sessionLength * 60);
+    }
     if (timerState) {
       var t = setTimeout(() => {
         setTimeLeft(timeLeft - 1);
       }, 1000);
+      return () => clearTimeout(t);
     }
   });
-  // console.log(secondsToMinutes(1500));
-  // console.log(secondsToMinutes(1499));
-  return secondsToMinutes(timeLeft);
+  return (
+    <div className="session-view">
+      <h2 id="timer-label" style={{ color: timeLeft < 60 ? "red" : "#ffd700" }}>
+        {timerType}
+      </h2>
+      <h1 id="time-left" style={{ color: timeLeft < 60 ? "red" : "#ffd700" }}>
+        {secondsToMinutes(timeLeft)}
+      </h1>
+      <MediaControls
+        setBreakLength={setBreakLength}
+        setSessionLength={setSessionLength}
+        timerState={timerState}
+        toggleTimerState={toggleTimerState}
+        setTimeLeft={setTimeLeft}
+        setTimerType={setTimerType}
+      />
+      <audio
+        id="beep"
+        preload="auto"
+        src="https://raw.githubusercontent.com/freeCodeCamp/cdn/master/build/testable-projects-fcc/audio/BeepSound.wav"
+      ></audio>
+    </div>
+  );
 }
 
 export default Timer;
