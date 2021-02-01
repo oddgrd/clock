@@ -80,6 +80,7 @@ body {
   font-size: 4rem;
   justify-content: center;
   align-items: center;
+  margin-top: -15px;
 }
 .media-controls {
   display: flex;
