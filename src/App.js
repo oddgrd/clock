@@ -2,7 +2,7 @@ import { React, useState } from "react";
 import "./App.css";
 import DurationModifiers from "./components/DurationModifiers";
 import Timer from "./components/Timer";
-import Heading from "./components/Heading";
+
 function App() {
   const [breakLength, setBreakLength] = useState(5);
   const [sessionLength, setSessionLength] = useState(25);
@@ -12,7 +12,6 @@ function App() {
   const durationModifiers = ["break", "session"];
   return (
     <div className="App">
-      {/* <Heading text="25+5CLOCK" arc={120} radius={350} /> */}
       <h1 className="heading">25 + 5 CLOCK</h1>
       <div className="grid-container">
         {durationModifiers.map((type, index) => {
