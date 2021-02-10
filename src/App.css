@@ -19,8 +19,8 @@ body {
   background: rgba(0, 0, 0, 0.699);
   border-radius: 5px;
   padding: 50px;
-  width: 500px;
-  height: 450px;
+  width: 450px;
+  height: 380px;
   display: grid;
   grid-template-columns: auto auto;
   grid-template-rows: 2fr 4fr;
@@ -31,11 +31,10 @@ body {
   display: grid;
   grid-template-rows: 1fr 3fr;
   justify-self: center;
-  border-radius: 8px;
   width: 180px;
-  margin-left: auto;
+  margin-left: -10px;
   margin-right: auto;
-  margin-bottom: 15px;
+  margin-top: -20px;
 }
 .increment-button,
 .decrement-button {
@@ -72,7 +71,6 @@ body {
 }
 #timer-label {
   text-align: center;
-  margin-top: 10px;
   font-size: 2.5rem;
 }
 #time-left {
@@ -112,7 +110,7 @@ body {
 }
 
 .heading {
-  font-size: 70px;
+  font-size: 60px;
   color: #ffd700;
   text-align: center;
 }
