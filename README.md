@@ -1,2 +1,2 @@
-React based implementation of a 25 + 5 Clock. FCC project.
-https://www.freecodecamp.org/learn/front-end-libraries/front-end-libraries-projects/build-a-25--5-clock
+FreeCodeCamp Front End Libraries project to make a JavaScript Calculator. Built using create-react-app. 
+Deployed with FCC test-suite at https://oddgrd.github.io/clock/
