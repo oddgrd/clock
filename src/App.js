@@ -12,7 +12,8 @@ function App() {
   const durationModifiers = ["break", "session"];
   return (
     <div className="App">
-      <Heading text="25+5CLOCK" arc={120} radius={350} />
+      {/* <Heading text="25+5CLOCK" arc={120} radius={350} /> */}
+      <h1 className="heading">25 + 5 CLOCK</h1>
       <div className="grid-container">
         {durationModifiers.map((type, index) => {
           return (
